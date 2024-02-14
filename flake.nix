@@ -11,10 +11,10 @@
       pkgsFor = nixpkgs.legacyPackages;
     in {
       packages = forAllSystems (system: {
-        default = pkgsFor.${system}.callPackage ./default.nix { nixpkgs = nixpkgs; };
+        default = pkgsFor.${system}.callPackage ./default.nix {};
       });
       devShells = forAllSystems (system: {
-        default = pkgsFor.${system}.callPackage ./shell.nix { pkgs = nixpkgs; };
+        default = pkgsFor.${system}.callPackage ./shell.nix {};
       });
     };
 }
