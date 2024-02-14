@@ -1,5 +1,5 @@
 {
-  description = "Spotify MIDI Control";
+  description = "Pipewire Prometheus Exporter";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
   };
@@ -11,12 +11,10 @@
       pkgsFor = nixpkgs.legacyPackages;
     in {
       packages = forAllSystems (system: {
-        default = pkgsFor.${system}.callPackage ./default.nix { };
+        default = pkgsFor.${system}.callPackage ./default.nix { nixpkgs = nixpkgs; };
       });
       devShells = forAllSystems (system: {
-        default = pkgsFor.${system}.callPackage ./shell.nix { };
+        default = pkgsFor.${system}.callPackage ./shell.nix { pkgs = nixpkgs; };
       });
     };
 }
-
-
